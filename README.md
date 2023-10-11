@@ -7,7 +7,7 @@
 
 Paper "Neighborhood-aware Geometric Encoding Network for Point Cloud Registration" was renamed to "Leveraging Inlier Correspondences Proportion for Point Cloud Registration" (NgeNet -> GCNet).
 
-## Use in Kaggle/CoLab notebook environment 
+## Use in Kaggle/Colab notebook environment (with GPU accelerator on)
 
 ### Prerequisition Installation
 
