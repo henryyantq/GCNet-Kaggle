@@ -52,10 +52,37 @@ Paper "Neighborhood-aware Geometric Encoding Network for Point Cloud Registratio
 ### Inference with GCNet
 
 ```sh
+src = "/kaggle/input/pcd-plyfiles/point-clouds/boat/boat_160_1.ply"  
+tgt = "/kaggle/input/pcd-plyfiles/point-clouds/boat/boat_160_2.ply"
+ckpt = "/kaggle/input/gcnet-3dmatch/3dmatch.pth"
+
 # Upload the pretrained model checkpoint as well as your point cloud data (plyfiles) to the "Data" section of your Kaggle workspace
 %cd /kaggle/working/GCNet-Kaggle
 !source venv/bin/activate && cd cpp_wrappers && sh compile_wrappers.sh
-!source venv/bin/activate && python demo.py --src_path "/kaggle/input/path_to_your_src_plyfile.ply" --tgt_path "/kaggle/input/path_to_your_target_plyfile.ply" --checkpoint "/kaggle/input/path_to_your_GCNet_3dmatch.pth" --voxel_size 0.025 --npts 20000 --no_vis
+!source venv/bin/activate && python demo.py --src_path {src} --tgt_path {tgt} --checkpoint {ckpt} --voxel_size 0.25 --npts 20000 --no_vis
+```
+
+### Dual-view merge
+
+```python
+!pip install --no-cache-dir open3d
+
+%cd /kaggle/working
+
+import open3d as o3d
+import numpy as np
+
+source_file = "/kaggle/input/pcd-plyfiles/point-clouds/boat/boat_160_1.ply" 
+target_file = "/kaggle/input/pcd-plyfiles/point-clouds/boat/boat_160_2.ply"
+
+source = o3d.io.read_point_cloud(source_file)
+target = o3d.io.read_point_cloud(target_file)
+
+transform = np.load("GCNet-Kaggle/reg_results/result_transform.npy")
+
+merged_pcd = source.transform(transform) + target
+o3d.io.write_point_cloud('merged.ply', merged_pcd)
+print("Finished merging plyfiles and saved as merged.ply under your workspace.")
 ```
 
 ## [Pretrained weights (Optional)]
