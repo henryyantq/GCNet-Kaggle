@@ -187,6 +187,8 @@ if __name__ == '__main__':
     # registration
     T = model.pipeline(source, target, npts=args.npts)
     print('Estimated transformation matrix: ', T)
+    np.save('reg_results/result_transform.npy', T)
+    print('Result has been saved to reg_results/result_transform.npy.')
 
     # vis
     if not args.no_vis:
