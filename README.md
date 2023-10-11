@@ -7,6 +7,10 @@
 
 Paper "Neighborhood-aware Geometric Encoding Network for Point Cloud Registration" was renamed to "Leveraging Inlier Correspondences Proportion for Point Cloud Registration" (NgeNet -> GCNet). 
 
+## [Pretrained weights (Optional)]
+
+Download pretrained weights for 3DMatch, 3DLoMatch, Odometry KITTI and MVP-RG from [GoogleDrive](https://drive.google.com/drive/folders/1JDn6zQfLdZfAVVboXRrrrCVRo48pRjyW?usp=sharing) or [BaiduDisk](https://pan.baidu.com/s/18G_Deim1UlSkY8wWoOiwnw) (pwd: `vr9g`). **For personal use, the "3dmatch.pth" should be enough, normally.**
+
 ## Use in Kaggle/Colab notebook environment (with GPU accelerator on)
 
 ### Prerequisition Installation
@@ -64,9 +68,11 @@ ckpt = "/kaggle/input/gcnet-3dmatch/3dmatch.pth"
 
 ### Dual-view merge
 
-```python
+```sh
 !pip install --no-cache-dir open3d
+```
 
+```python
 %cd /kaggle/working
 
 import open3d as o3d
@@ -85,25 +91,7 @@ o3d.io.write_point_cloud('merged.ply', merged_pcd)
 print("Finished merging plyfiles and saved as merged.ply under your workspace.")
 ```
 
-## [Pretrained weights (Optional)]
-
-Download pretrained weights for 3DMatch, 3DLoMatch, Odometry KITTI and MVP-RG from [GoogleDrive](https://drive.google.com/drive/folders/1JDn6zQfLdZfAVVboXRrrrCVRo48pRjyW?usp=sharing) or [BaiduDisk](https://pan.baidu.com/s/18G_Deim1UlSkY8wWoOiwnw) (pwd: `vr9g`). **For personal use, the "3dmatch.pth" should be enough, normally.**
-
 ## Personal data
-
-### Personal data (with the same voxel size as 3DMatch)
-
-```
-python demo.py --src_path demo_data/src1.ply --tgt_path demo_data/tgt1.ply --checkpoint your_path/3dmatch.pth  --voxel_size 0.025 --npts 20000
-```
-![](demo_data/my_data1.png)
-
-### Personal data (with different voxel size from 3DMatch)
-
-```
-python demo.py --src_path demo_data/src2.ply  --tgt_path demo_data/tgt2.ply --checkpoint your_path/3dmatch.pth --voxel_size 3 --npts 20000
-```
-![](demo_data/my_data2.png)
 
 Set an appropriate `voxel_size` for your test data. If you want to test on point cloud pair with **large amount of points**, please **set a large `voxel_size` according to your data**.
 
