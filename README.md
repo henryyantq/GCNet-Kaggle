@@ -44,7 +44,7 @@ Paper "Neighborhood-aware Geometric Encoding Network for Point Cloud Registratio
 !source venv/bin/activate && pip install -U pip
 !source venv/bin/activate && pip install -U setuptools wheel
 !source venv/bin/activate && pip install torch==1.12.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
-!source venv/bin/activate && pip install easydict==1.9 h5py==3.5.0 matplotlib==3.4.3 nibabel==3.2.1 numpy==1.21.3 open3d==0.10.0.0 scipy==1.7.1 tqdm==4.62.3 rich==12.5.1
+!source venv/bin/activate && pip install -r requirements.txt
 !pip cache purge
 ```
 
