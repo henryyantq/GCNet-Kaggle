@@ -7,6 +7,55 @@
 
 Paper "Neighborhood-aware Geometric Encoding Network for Point Cloud Registration" was renamed to "Leveraging Inlier Correspondences Proportion for Point Cloud Registration" (NgeNet -> GCNet).
 
+## Use in Kaggle/CoLab notebook environment 
+
+### Prerequisition Installation
+
+```sh
+# Configure system environment
+!apt-get update -y
+!apt-get upgrade -y
+!apt-get dist-upgrade -y
+!apt-get install build-essential python-dev python-setuptools python-pip python-smbus -y
+!apt-get install libncursesw5-dev libgdbm-dev libc6-dev -y 
+!apt-get install zlib1g-dev libsqlite3-dev tk-dev -y
+!apt-get install libssl-dev openssl -y
+!apt-get install libffi-dev -y
+!apt-get clean
+
+# Deploy Python 3.8
+%cd /kaggle/working
+!wget https://www.python.org/ftp/python/3.8.12/Python-3.8.12.tgz
+!tar -xzf Python-3.8.12.tgz
+
+%cd /kaggle/working/Python-3.8.12
+!./configure --enable-optimizations
+!make
+```
+
+```sh
+# Deploy GCNet
+%cd /kaggle/working
+!rm -rf ./*
+!git clone https://github.com/zhulf0804/GCNet
+
+%cd /kaggle/working/GCNet
+!python3.8 -m venv venv
+!source venv/bin/activate && pip install -U pip
+!source venv/bin/activate && pip install -U setuptools wheel
+!source venv/bin/activate && pip install torch==1.12.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
+!source venv/bin/activate && pip install easydict==1.9 h5py==3.5.0 matplotlib==3.4.3 nibabel==3.2.1 numpy==1.21.3 open3d==0.10.0.0 scipy==1.7.1 tqdm==4.62.3 rich==12.5.1
+!pip cache purge
+```
+
+### Inference with GCNet
+
+```sh
+%cd /kaggle/working/GCNet
+!source venv/bin/activate && cd cpp_wrappers && sh compile_wrappers.sh
+!source venv/bin/activate && python demo.py --src_path "/kaggle/input/path_to_your_src_plyfile.ply" --tgt_path "/kaggle/input/path_to_your_target_plyfile.ply" --checkpoint "/kaggle/input/path_to_your_GCNet_3dmatch.pth" --voxel_size 0.025 --npts 20000
+```
+
 ## Results (saved in reg_results/3DMatch*-pred)
 
 - Recall on 3DMatch and 3DLoMatch (correspondences RMSE below 0.2)
