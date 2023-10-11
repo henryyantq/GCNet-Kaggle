@@ -53,7 +53,7 @@ Paper "Neighborhood-aware Geometric Encoding Network for Point Cloud Registratio
 ```sh
 %cd /kaggle/working/GCNet-Kaggle
 !source venv/bin/activate && cd cpp_wrappers && sh compile_wrappers.sh
-!source venv/bin/activate && python demo.py --src_path "/kaggle/input/path_to_your_src_plyfile.ply" --tgt_path "/kaggle/input/path_to_your_target_plyfile.ply" --checkpoint "/kaggle/input/path_to_your_GCNet_3dmatch.pth" --voxel_size 0.025 --npts 20000
+!source venv/bin/activate && python demo.py --src_path "/kaggle/input/path_to_your_src_plyfile.ply" --tgt_path "/kaggle/input/path_to_your_target_plyfile.ply" --checkpoint "/kaggle/input/path_to_your_GCNet_3dmatch.pth" --voxel_size 0.025 --npts 20000 --no_vis
 ```
 
 ## [Pretrained weights (Optional)]
