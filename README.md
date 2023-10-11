@@ -37,9 +37,9 @@ Paper "Neighborhood-aware Geometric Encoding Network for Point Cloud Registratio
 # Deploy GCNet
 %cd /kaggle/working
 !rm -rf ./*
-!git clone https://github.com/zhulf0804/GCNet
+!git clone https://github.com/henryyantq/GCNet-Kaggle
 
-%cd /kaggle/working/GCNet
+%cd /kaggle/working/GCNet-Kaggle
 !python3.8 -m venv venv
 !source venv/bin/activate && pip install -U pip
 !source venv/bin/activate && pip install -U setuptools wheel
@@ -51,7 +51,7 @@ Paper "Neighborhood-aware Geometric Encoding Network for Point Cloud Registratio
 ### Inference with GCNet
 
 ```sh
-%cd /kaggle/working/GCNet
+%cd /kaggle/working/GCNet-Kaggle
 !source venv/bin/activate && cd cpp_wrappers && sh compile_wrappers.sh
 !source venv/bin/activate && python demo.py --src_path "/kaggle/input/path_to_your_src_plyfile.ply" --tgt_path "/kaggle/input/path_to_your_target_plyfile.ply" --checkpoint "/kaggle/input/path_to_your_GCNet_3dmatch.pth" --voxel_size 0.025 --npts 20000
 ```
