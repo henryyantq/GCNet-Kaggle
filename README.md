@@ -56,37 +56,11 @@ Paper "Neighborhood-aware Geometric Encoding Network for Point Cloud Registratio
 !source venv/bin/activate && python demo.py --src_path "/kaggle/input/path_to_your_src_plyfile.ply" --tgt_path "/kaggle/input/path_to_your_target_plyfile.ply" --checkpoint "/kaggle/input/path_to_your_GCNet_3dmatch.pth" --voxel_size 0.025 --npts 20000
 ```
 
-## Results (saved in reg_results/3DMatch*-pred)
-
-- Recall on 3DMatch and 3DLoMatch (correspondences RMSE below 0.2)
-
-    | Dataset | npairs | Scene Recall (%) | Pair Recall (%) |
-    | :---: | :---: | :---: | :---: |
-    | 3DMatch | 1279 | 92.9 | 93.9 |
-    | 3DLoMatch | 1726 | 71.9 | 74.5 | 
-
-- Recall on 3DMatch and 3DLoMatch (under 0.3m && 15 degrees)
-
-    | Dataset | npairs | Pair Recall (%) |
-    | :---: | :---: | :---: |
-    | 3DMatch | 1623 | 95.0 |
-    | 3DLoMatch | 1781 | 75.1 | 
-
-- Results on Odometry KITTI
-
-    | Dataset | RTE(cm) | RRE(°) | Recall (%) |
-    | :---: | :---: | :---: | :---: |
-    | Odometry KITTI | 6.1 | 0.26 | 99.8 |
-
-- Results on MVP-RG
-
-    | Dataset | RRE(°) | RTE | RMSE |
-    | :---: | :---: | :---: | :---: |
-    | MVP-RG | 7.99 | 0.048 | 0.093 |
-
 ## [Pretrained weights (Optional)]
 
 Download pretrained weights for 3DMatch, 3DLoMatch, Odometry KITTI and MVP-RG from [GoogleDrive](https://drive.google.com/drive/folders/1JDn6zQfLdZfAVVboXRrrrCVRo48pRjyW?usp=sharing) or [BaiduDisk](https://pan.baidu.com/s/18G_Deim1UlSkY8wWoOiwnw) (pwd: `vr9g`).
+
+## Personal data
 
 ### Personal data (with the same voxel size as 3DMatch)
 
