@@ -31,6 +31,7 @@ Paper "Neighborhood-aware Geometric Encoding Network for Point Cloud Registratio
 %cd /kaggle/working/Python-3.8.12
 !./configure --enable-optimizations
 !make
+!make altinstall
 ```
 
 ```sh
